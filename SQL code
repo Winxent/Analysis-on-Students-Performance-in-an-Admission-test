@@ -1,0 +1,134 @@
+ -- Data Description
+/** 
+In order to have a better data description we usually check the Shape and Size of our dataset along with the general description of datasets such as count, unique values etc.
+**/ 
+
+
+-- Check the Size of dataset
+SELECT count(column_name)
+FROM caba-demo.stdnt.INFORMATION_SCHEMA.COLUMNS
+WHERE table_name = 'stnd';
+-- This showed we had 9 columns
+select count(gender) as row_count from `caba-demo.stdnt.stnd`; 
+-- 1000 Rows in the dataset
+
+
+-- Check the column types
+SELECT column_name, data_type
+FROM caba-demo.stdnt.INFORMATION_SCHEMA.COLUMNS
+WHERE table_name = 'stnd';
+
+
+-- Check the metadata / Description of dataset
+SELECT table_name, column_name, is_nullable, data_type, is_partitioning_column 
+FROM `caba-demo.stdnt`.INFORMATION_SCHEMA.COLUMNS;
+
+
+-- Check the subset of observations recorded in the dataset 
+select * from `caba-demo.stdnt.stnd` limit 10;
+
+
+ -- Data Aggregation
+/** 
+It helps us understand the data trends and values based on the compact display of values
+**/ 
+
+
+-- check the unique values  alongwith the count of values for categorical columns
+SELECT count(gender) as gender_counter, gender FROM
+ `caba-demo.stdnt.stnd` group by gender;
+ 
+SELECT count(race_ethnicity) as race_counter, race_ethnicity FROM
+ `caba-demo.stdnt.stnd` group by race_ethnicity;
+ 
+SELECT count(parental_level_education) as parental_level_education_counter, parental_level_education FROM
+ `caba-demo.stdnt.stnd` group by parental_level_education;
+ 
+SELECT count(lunch) as lunch_counter, lunch FROM
+ `caba-demo.stdnt.stnd` group by lunch;
+
+
+-- check the min and max of numerical columns 
+SELECT min(math_score) as math_score_min, max(math_score) as math_score_max, 
+min(reading_score) as reading_score_min, max(reading_score) as reading_score_max,
+min(writing_score) as writing_score_min, max(writing_score) as writing_score_max,
+min(obtained_score) as obtained_score_min, max(obtained_score) as obtained_score_max
+ FROM  `caba-demo.stdnt.stnd`;
+
+
+-- Filter values  
+-- Filter values for group A  
+select * from  `caba-demo.stdnt.stnd`
+where race_ethnicity = "group A";
+
+
+-- Filter values for Bachelor's and Master's Parental level of education 
+select * from `caba-demo.stdnt.stnd`
+where parental_level_education in ("master's degree", "bachelor's degree");
+
+
+-- Sort Values 
+select * from `caba-demo.stdnt.stnd` order by obtained_score desc;
+
+
+ -- Data Summary
+/** 
+Summaries of data help us understand the detailed trends followed in datasets based on concise information using measures of location and spread 
+**/ 
+
+
+-- Summarize by mean values
+select test_preparation, avg(math_score) as Mean_Mathscore, avg(reading_score) as Mean_Readingscore, avg(writing_score) as Mean_Writingscore,
+avg(obtained_score) as Mean_Obtainedscore from `caba-demo.stdnt.stnd`  group by test_preparation;
+
+
+-- summarize by median
+select PERCENTILE_CONT(obtained_score,0.5) OVER() AS median_obtainedscore , PERCENTILE_CONT(writing_score,0.5) OVER() AS median_writingscore, 
+PERCENTILE_CONT(math_score,0.5) OVER() AS median_mathscore, PERCENTILE_CONT(reading_score,0.5) OVER() AS median_readingscore
+from `caba-demo.stdnt.stnd` limit 1;
+
+
+--summarize by mode 
+SELECT
+APPROX_TOP_COUNT(obtained_score,1) AS mode_obtainedscore, APPROX_TOP_COUNT(writing_score,1) AS mode_writingscore, 
+APPROX_TOP_COUNT(math_score,1) AS mode_mathscore, APPROX_TOP_COUNT(reading_score,1) AS mode_readingscore
+from `caba-demo.stdnt.stnd` limit 1;
+
+
+-- stddev 
+SELECT
+  STDDEV(obtained_score) AS standard_deviation
+FROM  `caba-demo.stdnt.stnd`;
+
+
+-- creating temp tables with grouped information 
+drop table if exists `caba-demo.stdnt.groupbyparental`; 
+Create table `caba-demo.stdnt.groupbyparental`
+ as 
+ (SELECT avg(obtained_score) as Obtained_score, parental_level_education FROM
+ `caba-demo.stdnt.stnd` group by parental_level_education);
+
+
+ select * from `caba-demo.stdnt.groupbyparental` order by Obtained_score;
+
+
+-- Making quartiles by Obtained Score 
+drop table if exists `caba-demo.stdnt.IQR`; 
+Create table `caba-demo.stdnt.IQR` as (
+select PERCENTILE_CONT(obtained_score,0.25) OVER() AS q1_obtainedscore , PERCENTILE_CONT(obtained_score,0.75) OVER() AS q3_obtainedscore,
+(PERCENTILE_CONT(obtained_score,0.75) OVER()) - (PERCENTILE_CONT(obtained_score,0.25) OVER()) as IQR
+from `caba-demo.stdnt.stnd` limit 1);
+ 
+select (q1_obtainedscore - (1.5* IQR)) as maximum, (q3_obtainedscore + (1.5* IQR)) as minimum from 
+`caba-demo.stdnt.IQR`;
+
+
+-- identify the outliers 
+select * from `caba-demo.stdnt.stnd` where obtained_score > 323.8 or obtained_score < 86.8;
+
+
+
+
+
+
+
