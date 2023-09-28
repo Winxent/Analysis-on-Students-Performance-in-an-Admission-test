@@ -1,6 +1,7 @@
-# portfolio
-I am a data enthusiast eager to apply my analytical skills to the field of data analysis. Through self study I had learned SQL, Python, Powerbi and Talbeau, enabling me to extract valuable insights from data and visualisation. I'm now seeking opportunities to leverage my unique background to solve real company problems using data.
+# Students Performance in an Admission test
+The school wants to analyze how parental education level and test preparation courses would affect a student's academic performance?
 
-<img width="66" alt="image" src="https://github.com/Winxent/portfolio/assets/146320825/87fd3945-460b-445d-a3fa-f5db0fa75258">
+![rainbow](https://github.com/Winxent/portfolio/assets/146320825/5dc438d2-e138-4db0-97a0-e5ae8c3473e8)
 
 
+# Introduction
