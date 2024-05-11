@@ -63,7 +63,7 @@ Using the Interquartile Range, we were able to pinpoint two students who scored 
 ![rainbow](https://github.com/Winxent/portfolio/assets/146320825/5dc438d2-e138-4db0-97a0-e5ae8c3473e8)
 
 # Data Visualisation
-link: 
+
 <img width="737" alt="image" src="https://github.com/Winxent/Analysis-on-Students-Performance-in-an-Admission-test/assets/146320825/1d86f5cb-e59a-4c0c-9a7b-8f8ae08ee90f">
 
 
