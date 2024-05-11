@@ -24,7 +24,8 @@ We also have a feature-engineered column called Obtained Score, which is a score
 We have used many data analysis approaches, such as 
 1. Data aggregation and Data summary procedures, to filter our dataset into subsets and aggregate it using either the mean, mode, or median. 
 2. To do our data aggregation based on quartiles, we have conducted analysis using the Minimum, Maximum, and Range values of the numerical columns. We were able to do an inter-quartile range analysis using these quartiles to identify outliers in a dataset. 
-3. In addition to putting Measures of Location and Measures of Spread into practice, we also performed data visualization analysis by creating scatter plots, bar plots, and correlation graphs from our dataset. 
+3. In addition to putting Measures of Location and Measures of Spread into practice, we also performed data visualization analysis by creating scatter plots, bar plots, and correlation graphs from our dataset.
+4. Power BI is used a a Data Visualisation tools to compile the data and reports.
 
 ![rainbow](https://github.com/Winxent/portfolio/assets/146320825/5dc438d2-e138-4db0-97a0-e5ae8c3473e8)
 
@@ -57,10 +58,16 @@ We have determined that students have struggled the most in the Math part compar
 ### Identification of Outliers: 
 Using the Interquartile Range, we were able to pinpoint two students who scored below either the IQR minimum or the bottom bound of the data distribution. 
 
-<img width="378" alt="image" src="https://github.com/Winxent/Analysis-on-Students-Performance-in-an-Admission-test/assets/146320825/6067ed91-d226-4bfa-92be-6427f052ec14">
+<img width="557" alt="image" src="https://github.com/Winxent/Analysis-on-Students-Performance-in-an-Admission-test/assets/146320825/f8d55252-26a4-4f24-b03d-bfacd81364fc">
 
 ![rainbow](https://github.com/Winxent/portfolio/assets/146320825/5dc438d2-e138-4db0-97a0-e5ae8c3473e8)
 
+# Data Visualisation
+link: 
+<img width="737" alt="image" src="https://github.com/Winxent/Analysis-on-Students-Performance-in-an-Admission-test/assets/146320825/1d86f5cb-e59a-4c0c-9a7b-8f8ae08ee90f">
+
+
+![rainbow](https://github.com/Winxent/portfolio/assets/146320825/5dc438d2-e138-4db0-97a0-e5ae8c3473e8)
 # Conclusion
 1. We now know that parents play a substantial part in a student's performance improvement. Parents who are educated, for instance, who hold a bachelor's or master's degree can better inspire and prepare their children for the admissions test. For parents who don't have a lot of education, schools can also set up extra help and training courses. so that these parents can inspire their kids and contribute more effectively to their achievement.
 2. According to the dataset analysis, students who have completed test preparation classes can do better on all of the admissions exam's sections and earn higher grades. So that students can perform better on tests, schools should push them to finish preparation courses that allow them to practice all portions conceptually and practically.
